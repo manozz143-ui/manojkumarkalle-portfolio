@@ -1,405 +1,214 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>K Manoj Kumar — DevOps Engineer / SRE</title>
-<meta name="description" content="K Manoj Kumar — DevOps Engineer, SRE & Production Support Engineer based in Bangalore. 6 years across Kyndryl, Marlabs, and Precision.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg: #0a1214;
-    --bg-2: #0e1a1d;
-    --surface: #101c1f;
-    --surface-2: #142226;
-    --line: #1e2f33;
-    --teal: #2fd6c4;
-    --teal-dim: #1c8f83;
-    --amber: #e79a5c;
-    --text: #e9efee;
-    --text-muted: #7f9497;
-    --text-faint: #4d5f62;
-    --font-display: 'Space Grotesk', sans-serif;
-    --font-body: 'Inter', sans-serif;
-    --font-mono: 'JetBrains Mono', monospace;
-  }
-
-  *{ margin:0; padding:0; box-sizing:border-box; }
-
-  html{ scroll-behavior:smooth; }
-
-  body{
-    background:
-      radial-gradient(1100px 600px at 85% -10%, rgba(47,214,196,0.08), transparent 60%),
-      radial-gradient(900px 500px at -10% 20%, rgba(231,154,92,0.05), transparent 55%),
-      var(--bg);
-    color:var(--text);
-    font-family:var(--font-body);
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-  }
-
-  a{ color:inherit; text-decoration:none; }
-
-  ::selection{ background:var(--teal); color:#0a1214; }
-
-  .wrap{ max-width:1080px; margin:0 auto; padding:0 28px; }
-
-  /* focus visibility */
-  a:focus-visible, button:focus-visible{
-    outline:2px solid var(--teal);
-    outline-offset:3px;
-    border-radius:2px;
-  }
-
-  @media (prefers-reduced-motion: reduce){
-    *{ animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important; }
-  }
-
-  /* ---------- topbar ---------- */
-  .topbar{
-    position:sticky; top:0; z-index:50;
-    background:rgba(10,18,20,0.82);
-    backdrop-filter:blur(10px);
-    border-bottom:1px solid var(--line);
-  }
-  .topbar-inner{
-    display:flex; align-items:center; justify-content:space-between;
-    padding:16px 28px;
-    max-width:1080px; margin:0 auto;
-  }
-  .brand{
-    font-family:var(--font-mono); font-size:14px; letter-spacing:0.02em;
-    color:var(--text);
-  }
-  .brand .dot{ color:var(--teal); }
-  .nav{ display:flex; gap:28px; }
-  .nav a{
-    font-family:var(--font-mono); font-size:12px; letter-spacing:0.08em;
-    text-transform:uppercase; color:var(--text-muted);
-    transition:color .2s ease;
-  }
-  .nav a:hover{ color:var(--teal); }
-  @media (max-width:640px){ .nav{ gap:16px; } .nav a{ font-size:11px; } }
-
-  /* ---------- hero ---------- */
-  .hero{
-    padding:96px 0 80px;
-    border-bottom:1px solid var(--line);
-    position:relative;
-    overflow:hidden;
-  }
-  .status-line{
-    font-family:var(--font-mono); font-size:12px; color:var(--teal);
-    letter-spacing:0.08em; margin-bottom:28px;
-    display:flex; align-items:center; gap:10px;
-  }
-  .status-line .pulse{
-    width:7px; height:7px; border-radius:50%; background:var(--teal);
-    box-shadow:0 0 0 0 rgba(47,214,196,0.6);
-    animation:pulse 2.2s infinite;
-  }
-  @keyframes pulse{
-    0%{ box-shadow:0 0 0 0 rgba(47,214,196,0.5); }
-    70%{ box-shadow:0 0 0 8px rgba(47,214,196,0); }
-    100%{ box-shadow:0 0 0 0 rgba(47,214,196,0); }
-  }
-  h1.headline{
-    font-family:var(--font-display); font-weight:700;
-    font-size:clamp(2.4rem, 6vw, 4.4rem);
-    line-height:1.05; letter-spacing:-0.02em;
-    max-width:760px;
-  }
-  h1.headline .accent{ color:var(--teal); }
-  .subhead{
-    margin-top:24px; max-width:560px;
-    font-size:17px; color:var(--text-muted);
-  }
-  .hero-meta{
-    margin-top:44px; display:flex; gap:36px; flex-wrap:wrap;
-    font-family:var(--font-mono); font-size:12px; color:var(--text-faint);
-  }
-  .hero-meta div span{ display:block; color:var(--text-muted); font-size:11px; margin-bottom:4px; text-transform:uppercase; letter-spacing:0.08em; }
-  .hero-meta div strong{ color:var(--text); font-weight:400; font-size:13px; }
-
-  .cta-row{ margin-top:40px; display:flex; gap:14px; flex-wrap:wrap; }
-  .btn{
-    font-family:var(--font-mono); font-size:12px; letter-spacing:0.05em;
-    padding:12px 22px; border-radius:3px; border:1px solid var(--line);
-    transition:all .2s ease;
-  }
-  .btn.primary{ background:var(--teal); color:#08181a; border-color:var(--teal); font-weight:500; }
-  .btn.primary:hover{ background:#3fe6d3; }
-  .btn.ghost{ color:var(--text-muted); }
-  .btn.ghost:hover{ color:var(--text); border-color:var(--text-muted); }
-
-  /* orbit line signature */
-  .orbit-line{ position:absolute; right:-60px; top:40px; width:420px; height:420px; opacity:0.5; pointer-events:none; }
-  @media (max-width:900px){ .orbit-line{ display:none; } }
-
-  /* ---------- section shared ---------- */
-  section{ padding:88px 0; border-bottom:1px solid var(--line); }
-  .eyebrow{
-    font-family:var(--font-mono); font-size:12px; color:var(--amber);
-    letter-spacing:0.1em; text-transform:uppercase; margin-bottom:14px;
-  }
-  h2.section-title{
-    font-family:var(--font-display); font-weight:600;
-    font-size:clamp(1.6rem, 3.4vw, 2.2rem);
-    margin-bottom:16px; letter-spacing:-0.01em;
-  }
-  .section-desc{ color:var(--text-muted); max-width:600px; font-size:15.5px; margin-bottom:52px; }
-
-  /* ---------- systems / skills ---------- */
-  .systems-grid{
-    display:grid; grid-template-columns:repeat(3, 1fr); gap:1px;
-    background:var(--line); border:1px solid var(--line);
-  }
-  @media (max-width:760px){ .systems-grid{ grid-template-columns:repeat(2,1fr); } }
-  @media (max-width:480px){ .systems-grid{ grid-template-columns:1fr; } }
-  .system-cell{
-    background:var(--surface); padding:26px 22px; transition:background .2s ease;
-  }
-  .system-cell:hover{ background:var(--surface-2); }
-  .system-cell .tag{
-    font-family:var(--font-mono); font-size:11px; color:var(--teal-dim);
-    letter-spacing:0.06em; text-transform:uppercase; margin-bottom:10px; display:block;
-  }
-  .system-cell h3{
-    font-family:var(--font-display); font-size:16px; font-weight:600; margin-bottom:8px;
-  }
-  .system-cell p{ color:var(--text-muted); font-size:13.5px; }
-
-  /* ---------- trajectory (space pivot) ---------- */
-  .trajectory{
-    display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start;
-  }
-  @media (max-width:800px){ .trajectory{ grid-template-columns:1fr; } }
-  .trajectory p{ color:var(--text-muted); font-size:15px; margin-bottom:16px; }
-  .trajectory strong{ color:var(--text); font-weight:500; }
-  .target-list{ font-family:var(--font-mono); font-size:13px; }
-  .target-list li{ list-style:none; padding:14px 0; border-top:1px solid var(--line); display:flex; justify-content:space-between; color:var(--text-muted); }
-  .target-list li:last-child{ border-bottom:1px solid var(--line); }
-  .target-list li span.name{ color:var(--text); }
-  .target-list li span.tag2{ color:var(--amber); font-size:11px; }
-
-  /* ---------- field log (travel/photography) ---------- */
-  .log-list{ display:flex; flex-direction:column; }
-  .log-entry{
-    display:grid; grid-template-columns:140px 1fr; gap:28px;
-    padding:26px 0; border-top:1px solid var(--line);
-  }
-  .log-entry:last-child{ border-bottom:1px solid var(--line); }
-  @media (max-width:600px){ .log-entry{ grid-template-columns:1fr; gap:8px; } }
-  .log-coord{ font-family:var(--font-mono); font-size:12px; color:var(--teal); line-height:1.7; }
-  .log-coord .route{ color:var(--text-faint); display:block; font-size:11px; margin-top:2px; }
-  .log-body h3{ font-family:var(--font-display); font-size:16.5px; font-weight:600; margin-bottom:6px; }
-  .log-body p{ color:var(--text-muted); font-size:14px; }
-
-  /* ---------- contact ---------- */
-  .contact{ border-bottom:none; text-align:left; }
-  .contact-inner{
-    display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:32px;
-  }
-  .contact h2{
-    font-family:var(--font-display); font-weight:700;
-    font-size:clamp(1.8rem, 4vw, 2.6rem); max-width:520px; letter-spacing:-0.01em;
-  }
-  .contact-links{ display:flex; flex-direction:column; gap:10px; }
-  .contact-links a{
-    font-family:var(--font-mono); font-size:14px; color:var(--text-muted);
-    display:flex; align-items:center; gap:10px;
-  }
-  .contact-links a:hover{ color:var(--teal); }
-  .contact-links a::before{ content:'→'; color:var(--teal); }
-
-  footer{
-    padding:28px 0 40px;
-    font-family:var(--font-mono); font-size:11px; color:var(--text-faint);
-    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio of a DevOps Engineer, SRE and Infrastructure Support Engineer specializing in Kubernetes, Docker, AWS, Azure and automation." />
+  <title>DevOps Engineer · SRE · Infra Support</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <!-- Animated code background -->
+  <canvas id="code-bg" aria-hidden="true"></canvas>
 
-<div class="topbar">
-  <div class="topbar-inner">
-    <div class="brand">K<span class="dot">.</span>MANOJ KUMAR</div>
-    <nav class="nav">
-      <a href="#systems">Systems</a>
-      <a href="#experience">Experience</a>
-      <a href="#log">Off the Clock</a>
-      <a href="#contact">Contact</a>
+  <!-- Navigation -->
+  <header class="nav">
+    <a href="#home" class="nav__logo"><span class="nav__prompt">~/</span>manoj<span class="nav__cursor">_</span></a>
+    <nav class="nav__links">
+      <a href="#about">about</a>
+      <a href="#skills">skills</a>
+      <a href="#experience">experience</a>
+      <a href="#education">education</a>
+      <a href="#contact">contact</a>
     </nav>
-  </div>
-</div>
+    <button class="nav__toggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
 
-<header class="hero">
-  <div class="wrap">
-    <div class="status-line"><span class="pulse"></span> STATUS: OPEN TO OPPORTUNITIES — BANGALORE, IN</div>
-    <h1 class="headline">Keeping <span class="accent">production</span><br>up, stable, and running.</h1>
-    <p class="subhead">DevOps &amp; Site Reliability Engineer with 6 years running production environments — SLAs, incidents, change and service requests — across Kubernetes, Docker, and automation-first infrastructure.</p>
+  <main>
+    <!-- Hero -->
+    <section id="home" class="hero">
+      <div class="hero__inner">
+        <div class="hero__content">
+          <div class="hero__terminal">
+            <div class="term__bar">
+              <span class="term__dot term__dot--red"></span>
+              <span class="term__dot term__dot--yellow"></span>
+              <span class="term__dot term__dot--green"></span>
+              <span class="term__title">bash — deploy.sh</span>
+            </div>
+            <div class="term__body">
+              <p class="term__line"><span class="term__ps">$</span> <span id="typed-cmd"></span><span class="term__caret">▋</span></p>
+            </div>
+          </div>
 
-    <div class="hero-meta">
-      <div><span>Based</span><strong>Bangalore, IN</strong></div>
-      <div><span>Focus</span><strong>DevOps / SRE / Production Support</strong></div>
-      <div><span>Experience</span><strong>6 Years</strong></div>
-      <div><span>Currently</span><strong>Kyndryl</strong></div>
-    </div>
+          <span class="hero__hello">// Hi, I'm</span>
+          <h1 class="hero__name">K Manoj Kumar</h1>
+          <p class="hero__role" id="role-swap">DevOps Engineer</p>
+          <p class="hero__sub">
+            Building resilient, automated and observable infrastructure.
+            5+ years keeping production reliable across cloud and on-prem.
+          </p>
+          <div class="hero__cta">
+            <a href="#experience" class="btn btn--primary">View Experience</a>
+            <a href="#contact" class="btn btn--ghost">Get in touch</a>
+          </div>
+        </div>
 
-    <div class="cta-row">
-      <a class="btn primary" href="#contact">Get in touch</a>
-      <a class="btn ghost" href="#systems">View systems ↓</a>
-    </div>
-  </div>
-
-  <svg class="orbit-line" viewBox="0 0 420 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <ellipse cx="210" cy="210" rx="190" ry="90" stroke="#1e2f33" stroke-width="1"/>
-    <ellipse cx="210" cy="210" rx="190" ry="90" stroke="#2fd6c4" stroke-width="1" stroke-dasharray="4 420" stroke-dashoffset="0">
-      <animate attributeName="stroke-dashoffset" from="0" to="-848" dur="14s" repeatCount="indefinite"/>
-    </ellipse>
-    <circle cx="210" cy="210" r="3" fill="#e79a5c"/>
-  </svg>
-</header>
-
-<section id="systems">
-  <div class="wrap">
-    <div class="eyebrow">01 — Core Systems</div>
-    <h2 class="section-title">What I run in production</h2>
-    <p class="section-desc">Platform engineering across the full stack — from cluster orchestration down to the pipelines that ship into it.</p>
-  </div>
-  <div class="wrap">
-  <div class="systems-grid">
-    <div class="system-cell">
-      <span class="tag">Orchestration</span>
-      <h3>Kubernetes / Docker</h3>
-      <p>Container orchestration and workload management in live production environments.</p>
-    </div>
-    <div class="system-cell">
-      <span class="tag">Automation</span>
-      <h3>Ansible / Shell Scripting</h3>
-      <p>Config management and scripting to automate repetitive ops work and reduce manual error.</p>
-    </div>
-    <div class="system-cell">
-      <span class="tag">Foundation</span>
-      <h3>Linux Administration</h3>
-      <p>Day-to-day system administration underpinning every environment I've supported.</p>
-    </div>
-    <div class="system-cell">
-      <span class="tag">Reliability</span>
-      <h3>SLA Management</h3>
-      <p>Meeting and tracking service-level commitments across production support engagements.</p>
-    </div>
-    <div class="system-cell">
-      <span class="tag">Response</span>
-      <h3>Incident Management</h3>
-      <p>Triage, escalation, and resolution of production incidents under time pressure.</p>
-    </div>
-    <div class="system-cell">
-      <span class="tag">Governance</span>
-      <h3>Change Management</h3>
-      <p>Planning and executing change requests with minimal risk to live systems.</p>
-    </div>
-    <div class="system-cell">
-      <span class="tag">Delivery</span>
-      <h3>Service Requests</h3>
-      <p>Handling day-to-day service requests as part of ongoing production support.</p>
-    </div>
-    <div class="system-cell">
-      <span class="tag">Support</span>
-      <h3>Production Support</h3>
-      <p>On-the-ground ownership of live environments across multiple client engagements.</p>
-    </div>
-    <div class="system-cell">
-      <span class="tag">Uptime</span>
-      <h3>Site Reliability</h3>
-      <p>Keeping systems stable, observable, and recoverable when things go wrong.</p>
-    </div>
-  </div>
-  </div>
-</section>
-
-<section id="experience">
-  <div class="wrap">
-    <div class="eyebrow">02 — Experience</div>
-    <h2 class="section-title">6 years in production</h2>
-    <p class="section-desc">Supporting live environments across three organizations — moving up in scope and ownership each time.</p>
-    <div class="log-list">
-      <div class="log-entry">
-        <div class="log-coord">KYNDRYL<span class="route">4 YEARS · CURRENT</span></div>
-        <div class="log-body">
-          <h3>DevOps / Production Support</h3>
-          <p>Longest and current stint — production environment ownership including SLAs, incident response, change requests, and service requests on Kubernetes and Docker-based infrastructure.</p>
+        <div class="hero__photo">
+          <div class="hero__photo-glow"></div>
+          <img src="assets/manoj.png" alt="K Manoj Kumar" />
         </div>
       </div>
-      <div class="log-entry">
-        <div class="log-coord">MARLABS<span class="route">1 YEAR</span></div>
-        <div class="log-body">
-          <h3>DevOps / Production Support</h3>
-          <p>Production support and automation work using shell scripting, Ansible, and Linux administration.</p>
-        </div>
+      <div class="hero__scroll">
+        <span></span> scroll
       </div>
-      <div class="log-entry">
-        <div class="log-coord">PRECISION<span class="route">1 YEAR</span></div>
-        <div class="log-body">
-          <h3>DevOps / Production Support</h3>
-          <p>Early production support role — foundation in Linux systems, incident handling, and day-to-day operations.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<section id="log">
-  <div class="wrap">
-    <div class="eyebrow">03 — Off the Clock</div>
-    <h2 class="section-title">Behind the camera</h2>
-    <p class="section-desc">Outside of production environments, I spend my time behind a lens instead of a terminal.</p>
-    <div class="log-list">
-      <div class="log-entry">
-        <div class="log-coord">CAPTURE<span class="route">PHOTOGRAPHY</span></div>
-        <div class="log-body">
-          <h3>Photography</h3>
-          <p>Shooting as a way to slow down and pay attention to things a checklist never asks about.</p>
+    <!-- About -->
+    <section id="about" class="section reveal">
+      <div class="section__head">
+        <span class="section__idx">01</span>
+        <h2 class="section__title">About</h2>
+      </div>
+      <div class="about">
+        <p>
+          I'm a <strong>DevOps Engineer</strong>, <strong>Site Reliability Engineer</strong> and
+          <strong>Infrastructure Support Engineer</strong> focused on automating everything that can be
+          automated. I design CI/CD pipelines, containerize and orchestrate workloads, and keep systems
+          observable and self-healing.
+        </p>
+        <p>
+          Day to day I work with <strong>Kubernetes</strong> and <strong>Docker</strong>, provision cloud
+          infrastructure on <strong>AWS</strong> and <strong>Azure</strong>, automate configuration with
+          <strong>Ansible</strong>, and glue it all together with <strong>shell scripting</strong> on
+          <strong>Linux</strong>. I care about reliability, incident response, and clean, repeatable operations.
+        </p>
+        <div class="about__stats">
+          <div class="stat"><span class="stat__num" data-count="6">0</span><span class="stat__label">Years in Ops</span></div>
+          <div class="stat"><span class="stat__num" data-count="3">0</span><span class="stat__label">Companies</span></div>
+          <div class="stat"><span class="stat__num" data-count="8">0</span><span class="stat__label">Core Tools</span></div>
+          <div class="stat"><span class="stat__num" data-count="99">0</span><span class="stat__label">% Uptime Focus</span></div>
         </div>
       </div>
-      <div class="log-entry">
-        <div class="log-coord">EDIT<span class="route">VIDEOGRAPHY</span></div>
-        <div class="log-body">
-          <h3>Videography</h3>
-          <p>Turning raw footage into something worth watching — planning, shooting, and cutting it together end to end.</p>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="section reveal">
+      <div class="section__head">
+        <span class="section__idx">02</span>
+        <h2 class="section__title">Skills &amp; Tooling</h2>
+      </div>
+      <div class="skills">
+        <article class="skill"><span class="skill__icon">☸</span><h3>Kubernetes</h3><p>Deployments, Helm, scaling &amp; self-healing workloads.</p></article>
+        <article class="skill"><span class="skill__icon">🐳</span><h3>Docker</h3><p>Container images, multi-stage builds &amp; registries.</p></article>
+        <article class="skill"><span class="skill__icon">⑂</span><h3>Git</h3><p>Branching strategies, GitOps &amp; version control.</p></article>
+        <article class="skill"><span class="skill__icon">&gt;_</span><h3>Shell Scripting</h3><p>Bash automation, cron jobs &amp; operational tooling.</p></article>
+        <article class="skill"><span class="skill__icon">🅰</span><h3>Ansible</h3><p>Idempotent configuration management &amp; playbooks.</p></article>
+        <article class="skill"><span class="skill__icon">☁</span><h3>AWS</h3><p>EC2, S3, IAM, VPC, EKS &amp; cloud operations.</p></article>
+        <article class="skill"><span class="skill__icon">⛅</span><h3>Azure</h3><p>VMs, AKS, resource groups &amp; hybrid cloud.</p></article>
+        <article class="skill"><span class="skill__icon">🐧</span><h3>Linux</h3><p>System administration, tuning &amp; troubleshooting.</p></article>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="section reveal">
+      <div class="section__head">
+        <span class="section__idx">03</span>
+        <h2 class="section__title">Experience</h2>
+      </div>
+      <div class="timeline">
+        <div class="tl__item">
+          <div class="tl__dot"></div>
+          <span class="tl__date">2022 — 2026</span>
+          <h3 class="tl__role">DevOps Engineer</h3>
+          <span class="tl__company">Kyndryl</span>
+          <p class="tl__desc">
+            4 years building and operating CI/CD pipelines, containerized platforms on Kubernetes and Docker,
+            and cloud infrastructure across AWS and Azure. Automated deployments and configuration with
+            Ansible and shell scripting while driving reliability improvements.
+          </p>
+        </div>
+        <div class="tl__item">
+          <div class="tl__dot"></div>
+          <span class="tl__date">2021 — 2022</span>
+          <h3 class="tl__role">Production Support Engineer</h3>
+          <span class="tl__company">Marlabs</span>
+          <p class="tl__desc">
+            1 year supporting production systems — incident response, monitoring, and troubleshooting on
+            Linux environments to keep critical services running smoothly.
+          </p>
+        </div>
+        <div class="tl__item">
+          <div class="tl__dot"></div>
+          <span class="tl__date">2020 — 2021</span>
+          <h3 class="tl__role">Production Support Engineer</h3>
+          <span class="tl__company">Precision</span>
+          <p class="tl__desc">
+            1 year in production support — handling operational tickets, diagnosing issues, and maintaining
+            system stability with hands-on Linux administration.
+          </p>
         </div>
       </div>
-      <div class="log-entry">
-        <div class="log-coord">GRADE<span class="route">COLOR GRADING</span></div>
-        <div class="log-body">
-          <h3>Color grading</h3>
-          <p>The last mile of the process — building a consistent, deliberate look rather than leaving footage flat.</p>
+    </section>
+
+    <!-- Education -->
+    <section id="education" class="section reveal">
+      <div class="section__head">
+        <span class="section__idx">04</span>
+        <h2 class="section__title">Education</h2>
+      </div>
+      <div class="edu">
+        <div class="edu__card">
+          <span class="edu__year">2015 — 2019</span>
+          <h3 class="edu__degree">B.Tech</h3>
+          <span class="edu__school">KSRM College of Engineering</span>
+          <p class="edu__desc">Bachelor of Technology — foundation in engineering, systems and problem solving.</p>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<section id="contact" class="contact">
-  <div class="wrap">
-    <div class="eyebrow">04 — Contact</div>
-    <div class="contact-inner">
-      <h2>Open to DevOps, SRE &amp; Production Support roles. Let's talk.</h2>
-      <div class="contact-links">
-        <a href="mailto:manoj.kumar0520@gmail.com">manoj.kumar0520@gmail.com</a>
-        <a href="https://linkedin.com/in/manoj-kumar" target="_blank" rel="noopener">linkedin.com/in/manoj-kumar</a>
+    <!-- Contact -->
+    <section id="contact" class="section reveal">
+      <div class="section__head">
+        <span class="section__idx">05</span>
+        <h2 class="section__title">Contact</h2>
       </div>
-    </div>
-  </div>
-</section>
+      <div class="contact">
+        <p class="contact__lead">Let's build reliable infrastructure together.</p>
+        <div class="contact__cards">
+          <a href="mailto:me@manojkumarkalle.co.in" class="contact__card">
+            <span class="contact__icon">✉</span>
+            <span class="contact__label">Email</span>
+            <span class="contact__value">me@manojkumarkalle.co.in</span>
+          </a>
+          <a href="mailto:kmanoj.kumar0520@gmail.com" class="contact__card">
+            <span class="contact__icon">✉</span>
+            <span class="contact__label">Email</span>
+            <span class="contact__value">kmanoj.kumar0520@gmail.com</span>
+          </a>
+          <a href="tel:+9195334444" class="contact__card">
+            <span class="contact__icon">☎</span>
+            <span class="contact__label">Phone</span>
+            <span class="contact__value">+91 95334444**</span>
+          </a>
+        </div>
+        <div class="contact__links">
+          <a href="https://www.linkedin.com/in/manoj-kumar-4250a5241" target="_blank" rel="noopener" class="btn btn--ghost">LinkedIn</a>
+          <a href="https://github.com/manozz143-ui" target="_blank" rel="noopener" class="btn btn--ghost">GitHub</a>
+        </div>
+      </div>
+    </section>
+  </main>
 
-<footer class="wrap">
-  <span>© 2026 K Manoj Kumar. Built &amp; deployed from Bangalore.</span>
-  <span>krishnakishore.in</span>
-</footer>
+  <footer class="footer">
+    <p><span class="footer__prompt">$</span> echo "© K Manoj Kumar — built with Linux, coffee and shell scripts" &amp;&amp; exit 0</p>
+  </footer>
 
+  <script src="script.js"></script>
 </body>
 </html>
