@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>K Manoj Kumar — Resume</title>
+  <meta name="description" content="Resume of K Manoj Kumar — Production Support Engineer / Linux System Administrator with 6 years of experience." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #0f141c;
+      --sidebar: #0f141c;
+      --paper: #ffffff;
+      --paper-soft: #f4f6f9;
+      --text: #23303f;
+      --muted: #5d6b7c;
+      --line: #e2e7ee;
+      --accent: #16b34a;      /* green */
+      --accent-soft: #e7f7ee;
+      --sidebar-text: #cfd8e3;
+      --sidebar-muted: #8b98ac;
+      --mono: "JetBrains Mono", ui-monospace, monospace;
+      --sans: "Space Grotesk", system-ui, -apple-system, sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: var(--sans);
+      background: #0a0e14;
+      color: var(--text);
+      line-height: 1.5;
+      padding: 32px 16px 80px;
+      display: flex;
+      justify-content: center;
+    }
+
+    /* Toolbar */
+    .toolbar {
+      position: fixed;
+      top: 18px; right: 18px;
+      z-index: 20;
+      display: flex; gap: 10px;
+    }
+    .btn {
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      border: 0;
+      border-radius: 8px;
+      padding: 0.6rem 1.1rem;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .btn--primary { background: #39d353; color: #06210d; font-weight: 700; }
+    .btn--ghost { background: #1a2330; color: #d6deeb; border: 1px solid #2a3543; }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.35); }
+
+    /* Paper sheet — A4 proportions */
+    .sheet {
+      width: 210mm;
+      min-height: 297mm;
+      background: var(--paper);
+      display: grid;
+      grid-template-columns: 68mm 1fr;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.55);
+      overflow: hidden;
+    }
+
+    /* ===== Sidebar ===== */
+    .side {
+      background: var(--sidebar);
+      color: var(--sidebar-text);
+      padding: 0 0 20mm;
+    }
+    .side__photo-wrap {
+      position: relative;
+      height: 62mm;
+      overflow: hidden;
+      border-bottom: 3px solid var(--accent);
+      background: radial-gradient(circle at 50% 30%, #1a2634, #0f141c);
+    }
+    .side__photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 8%;
+      filter: saturate(1.05);
+    }
+    .side__inner { padding: 8mm 7mm 0; }
+    .side__block { margin-bottom: 7mm; }
+    .side__h {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 3mm;
+      padding-bottom: 1.5mm;
+      border-bottom: 1px solid #24303e;
+    }
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 0.78rem;
+      color: var(--sidebar-text);
+      margin-bottom: 2.4mm;
+      word-break: break-word;
+    }
+    .contact-item a { color: var(--sidebar-text); text-decoration: none; }
+    .contact-item .ic { color: var(--accent); flex-shrink: 0; width: 14px; text-align: center; }
+
+    .skillgroup { margin-bottom: 3.5mm; }
+    .skillgroup__t {
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: #eef3f9;
+      margin-bottom: 1.2mm;
+    }
+    .skillgroup__v {
+      font-size: 0.72rem;
+      color: var(--sidebar-muted);
+      line-height: 1.45;
+    }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 5px; }
+    .tag {
+      font-family: var(--mono);
+      font-size: 0.66rem;
+      background: #17212e;
+      border: 1px solid #253140;
+      color: #b9c6d6;
+      padding: 2px 7px;
+      border-radius: 20px;
+    }
+
+    .edu-item .edu__deg { font-size: 0.82rem; font-weight: 600; color: #eef3f9; }
+    .edu-item .edu__meta { font-size: 0.72rem; color: var(--sidebar-muted); margin-top: 1mm; }
+
+    /* ===== Main ===== */
+    .main { padding: 12mm 12mm 12mm; }
+    .name {
+      font-size: 2.15rem;
+      font-weight: 700;
+      letter-spacing: -1px;
+      color: var(--ink);
+      line-height: 1.05;
+    }
+    .role {
+      font-family: var(--mono);
+      font-size: 0.95rem;
+      color: var(--accent);
+      margin-top: 2mm;
+      font-weight: 500;
+    }
+    .rule { height: 2px; background: linear-gradient(90deg, var(--accent), transparent); margin: 6mm 0 5mm; }
+
+    .sec { margin-bottom: 6mm; }
+    .sec__h {
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 3mm;
+    }
+    .sec__h::before {
+      content: "";
+      width: 14px; height: 14px;
+      background: var(--accent);
+      border-radius: 4px;
+      display: inline-block;
+    }
+    .summary { font-size: 0.85rem; color: var(--text); }
+
+    .job { margin-bottom: 4.5mm; }
+    .job__top { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+    .job__role { font-size: 0.95rem; font-weight: 700; color: var(--ink); }
+    .job__dur { font-family: var(--mono); font-size: 0.72rem; color: var(--muted); white-space: nowrap; }
+    .job__co { font-size: 0.82rem; color: var(--accent); font-weight: 600; margin: 0.5mm 0 2mm; }
+    .job ul { list-style: none; }
+    .job li {
+      position: relative;
+      padding-left: 14px;
+      font-size: 0.8rem;
+      color: var(--text);
+      margin-bottom: 1.4mm;
+    }
+    .job li::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 0.75rem;
+    }
+
+    .ach { list-style: none; }
+    .ach li {
+      position: relative;
+      padding-left: 16px;
+      font-size: 0.8rem;
+      margin-bottom: 1.6mm;
+      color: var(--text);
+    }
+    .ach li::before {
+      content: "✓";
+      position: absolute; left: 0;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    /* ===== Print ===== */
+    @media print {
+      @page { size: A4; margin: 0; }
+      body { padding: 0; background: #fff; }
+      .toolbar { display: none !important; }
+      .sheet { box-shadow: none; width: 210mm; min-height: 297mm; }
+      * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    }
+
+    /* ===== Small screens ===== */
+    @media (max-width: 800px) {
+      body { padding: 16px 0 60px; }
+      .sheet { width: 100%; min-height: 0; grid-template-columns: 1fr; }
+      .toolbar { position: static; justify-content: center; margin-bottom: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="toolbar">
+    <button class="btn btn--primary" onclick="window.print()">⬇ Save as PDF</button>
+    <a class="btn btn--ghost" href="index.html">← Portfolio</a>
+  </div>
+
+  <div class="sheet">
+    <!-- Sidebar -->
+    <aside class="side">
+      <div class="side__photo-wrap">
+        <img src="assets/manoj.png" alt="K Manoj Kumar" />
+      </div>
+      <div class="side__inner">
+        <div class="side__block">
+          <h2 class="side__h">Contact</h2>
+          <div class="contact-item"><span class="ic">✆</span><a href="tel:+919533444491">+91-9533444491</a></div>
+          <div class="contact-item"><span class="ic">✉</span><a href="mailto:me@manojkumarkalle.co.in">me@manojkumarkalle.co.in</a></div>
+          <div class="contact-item"><span class="ic">✉</span><a href="mailto:kmanoj.kumar0520@gmail.com">kmanoj.kumar0520@gmail.com</a></div>
+          <div class="contact-item"><span class="ic">in</span><a href="https://www.linkedin.com/in/manoj-kumar-4250a5241" target="_blank" rel="noopener">linkedin.com/in/manoj-kumar-4250a5241</a></div>
+        </div>
+
+        <div class="side__block">
+          <h2 class="side__h">Technical Skills</h2>
+          <div class="skillgroup"><div class="skillgroup__t">Operating Systems</div><div class="skillgroup__v">RHEL, SUSE (SLES), CentOS, Ubuntu</div></div>
+          <div class="skillgroup"><div class="skillgroup__t">Automation &amp; Scripting</div><div class="skillgroup__v">Shell Scripting (Bash), Ansible</div></div>
+          <div class="skillgroup"><div class="skillgroup__t">Containers &amp; Orchestration</div><div class="skillgroup__v">Docker, Kubernetes</div></div>
+          <div class="skillgroup"><div class="skillgroup__t">Version Control</div><div class="skillgroup__v">Git</div></div>
+          <div class="skillgroup"><div class="skillgroup__t">Linux Administration</div><div class="skillgroup__v">User/Group &amp; File System Mgmt, LVM, Performance Tuning, Boot Troubleshooting, YUM/DNF, Cron, SSH</div></div>
+          <div class="skillgroup"><div class="skillgroup__t">Networking</div><div class="skillgroup__v">TCP/IP, DNS, DHCP, Routing, SSL/TLS, NFS, Samba</div></div>
+          <div class="skillgroup"><div class="skillgroup__t">Monitoring &amp; Support</div><div class="skillgroup__v">Log Analysis, Incident Mgmt, RCA, Performance Monitoring, Service Recovery</div></div>
+        </div>
+
+        <div class="side__block">
+          <h2 class="side__h">Education</h2>
+          <div class="edu-item">
+            <div class="edu__deg">B.Tech — Mechanical Engineering</div>
+            <div class="edu__meta">KSRM College of Engineering · 2015 – 2019</div>
+          </div>
+        </div>
+
+        <div class="side__block">
+          <h2 class="side__h">Strengths</h2>
+          <div class="tags">
+            <span class="tag">Production Support</span>
+            <span class="tag">Incident Mgmt</span>
+            <span class="tag">RCA</span>
+            <span class="tag">Troubleshooting</span>
+            <span class="tag">Team Collaboration</span>
+            <span class="tag">Quick Learner</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="main">
+      <h1 class="name">K MANOJ KUMAR</h1>
+      <p class="role">Production Support Engineer · Linux System Administrator</p>
+      <div class="rule"></div>
+
+      <section class="sec">
+        <h2 class="sec__h">Professional Summary</h2>
+        <p class="summary">
+          Production Support Engineer with <strong>6 years of IT experience</strong> in Linux system
+          administration and 24×7 production support. Skilled in maintaining highly available environments,
+          troubleshooting critical incidents, root cause analysis, server administration, and automation using
+          Shell Scripting and Ansible. Hands-on with Docker, Kubernetes, Git, monitoring, and ITIL-based
+          incident management, with strong analytical and problem-solving abilities.
+        </p>
+      </section>
+
+      <section class="sec">
+        <h2 class="sec__h">Professional Experience</h2>
+
+        <div class="job">
+          <div class="job__top">
+            <span class="job__role">Associate – Systems Administration</span>
+            <span class="job__dur">3 yrs 11 mos</span>
+          </div>
+          <div class="job__co">Kyndryl</div>
+          <ul>
+            <li>Provided L2/L3 production support for RHEL and SUSE Linux servers in 24×7 environments.</li>
+            <li>Handled incident, problem, and change management following ITIL practices.</li>
+            <li>Troubleshot CPU, memory, filesystem, and network performance issues.</li>
+            <li>Automated repetitive administrative tasks using Shell scripting, reducing manual effort.</li>
+            <li>Managed Docker containers and supported Kubernetes-based application workloads.</li>
+            <li>Used Ansible for configuration management &amp; deployment; maintained Git repositories.</li>
+            <li>Performed patching, health checks, log analysis, and capacity monitoring; authored SOPs.</li>
+            <li>Coordinated with application, DB, and network teams during outages and on-call support.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job__top">
+            <span class="job__role">Linux System Administrator</span>
+            <span class="job__dur">1 yr</span>
+          </div>
+          <div class="job__co">Marlabs</div>
+          <ul>
+            <li>Administered Linux servers and managed user accounts &amp; filesystem permissions.</li>
+            <li>Performed server monitoring, troubleshooting, and backup &amp; recovery activities.</li>
+            <li>Automated routine tasks using Shell Scripting.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job__top">
+            <span class="job__role">Linux Administrator</span>
+            <span class="job__dur">1 yr</span>
+          </div>
+          <div class="job__co">Precision</div>
+          <ul>
+            <li>Installed and configured Linux operating systems; managed services and packages.</li>
+            <li>Supported server maintenance and performance monitoring.</li>
+            <li>Resolved production issues within SLA timelines.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="sec">
+        <h2 class="sec__h">Key Achievements</h2>
+        <ul class="ach">
+          <li>Reduced manual administration effort by automating routine server tasks with Shell scripts.</li>
+          <li>Supported Docker container and Kubernetes application deployments &amp; lifecycle management.</li>
+          <li>Automated configuration management with Ansible playbooks across production servers.</li>
+          <li>Improved incident resolution time through effective log analysis and root cause analysis.</li>
+        </ul>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
